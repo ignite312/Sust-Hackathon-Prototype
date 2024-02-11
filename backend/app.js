@@ -34,6 +34,7 @@ app.get('/text-response', async (req, res) => {
     });
 });
 
+// Gemini image to text response
 app.get('/text-image-response', async (req, res) => {
     const {prompt, imageparts} = req.body;
     const resptext = await geminiProVision.text_image_response(prompt, imageparts);

@@ -2,6 +2,8 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const dotenv = require('dotenv');
 const fs = require('fs');
 
+dotenv.config();
+
 function fileToGenerativeParts(path, mimeType){
     return{
         inlineData: {
@@ -18,8 +20,6 @@ function generateImageParts(imageparts){
     });
     return generativeImageParts;
 }
-
-dotenv.config();
 
 // use this class to analyze images along with texts
 class GeminiProVision{

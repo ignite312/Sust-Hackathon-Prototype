@@ -27,10 +27,39 @@
   padding: 6px;
 }
 .navbar a:hover {
-  color: #f1356d;
+  color: hsl(342, 87%, 58%);
 }
+
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
+}
+
+.homestudents {
+    color: white;
+}
+
+.students {
+  padding: 20px;
+  margin: 10px auto;
+  background: greenyellow;
+  border-color: aqua;
+  text-align: center;
+}
+
+.homestudents .students:hover{
+  background: blanchedalmond;
+}
+
+.students h2 {
+  margin: 5px;
+}
+
+.students h3 {
+  margin: 5px;
+}
+
+.students p {
+  margin: 3px;
 }

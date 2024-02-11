@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 **Dhaka University (DU),** standing tall as a beacon of knowledge in Bangladesh, is the oldest and most prestigious public university in the country. Established in 1921 during the British colonial era, DU has evolved into a sprawling campus in the heart of Dhaka, hosting a diverse academic community and making significant contributions to education, research, and national development.
 
 **1. History and Legacy:**
@@ -51,3 +52,8 @@
    - Committed to providing quality education, fostering innovation, and contributing to the progress and development of Bangladesh.
 
 Dhaka University continues to be a symbol of academic excellence, intellectual leadership, and social progress in Bangladesh. It stands as a testament to the pursuit of knowledge, the power of education, and the impact of universities in shaping societies and transforming lives.
+=======
+I have been trained up to April 2023, and my knowledge is limited to information available as of that date. I do not have access to real-time information and cannot access or process data past April 2023.
+
+If you have a question about more up-to-date information, I recommend checking a more recent, trusted source, such as official news outlets, government websites, or reputable organizations.
+>>>>>>> Stashed changes

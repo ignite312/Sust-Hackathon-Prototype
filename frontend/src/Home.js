@@ -1,28 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-    const [students, setStudents] = useState([
-        {
-            id: "12",
-            name: "Emon"
-        },
-        {
-            id: "13",
-            name: "tousif"
-        }
-    ]);
+    const [students, setStudents] = useState(null);
 
-    return (
-        <div className="home">
-            <h2>Home Page</h2>
-            {students.map((student) => (
-                <div className="info-preview" key={student.id}>
-                    <h1>{student.id}</h1>
-                    <p>{student.name}</p>
+    useEffect(() => {
+        fetch('http://localhost:8000/students').then(res => {
+            return res.json();
+        }).then(data => {
+            setStudents(data);
+        });
+    }, []);
+
+    if(students){
+        return (
+            <div>
+                <div className="homestudents">
+                    {students.map((student) => (
+                        <div className="students" key={student.id}>
+                            <h2>Name: {student.name}</h2>
+                            <h3>Age: {student.age}</h3>
+                            <p>Grade: {student.grade}</p>
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 export default Home;
