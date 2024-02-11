@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// use this class to generate 
 class GeminiPro{
     constructor(){
         this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -14,9 +15,8 @@ class GeminiPro{
     async text_response(prompt){
         const result = await this.model.generateContent(prompt);
         const response = await result.response;
-        const resptext = response.text();
-        // console.log(resptext);
-        return resptext;
+        const text = response.text();
+        return text;
     }
 }
 

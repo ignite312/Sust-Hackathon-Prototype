@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const GeminiPro = require('./GeminiPro');
 const fs = require('fs');
+const GeminiProVision = require('./GeminiProVision');
 const markdown = require('markdown-it')();
 
 // App creation
@@ -15,6 +16,7 @@ app.use(cors());
 // App globals
 PORT = 8000;
 const geminiPro = new GeminiPro();
+const geminiProVision = new GeminiProVision();
 
 // Basic Gemini text to text response
 app.get('/text-response', async (req, res) => {
@@ -27,9 +29,24 @@ app.get('/text-response', async (req, res) => {
         }
         console.log('Successfully written markdown response');
     });
-    const markdownresp = markdown.render(resptext);
-    // console.log(markdownresp);
-    return res.status(200).send(markdownresp);
+    return res.status(200).json({
+        gemini_response: resptext
+    });
+});
+
+app.get('/text-image-response', async (req, res) => {
+    const {prompt, imageparts} = req.body;
+    const resptext = await geminiProVision.text_image_response(prompt, imageparts);
+    fs.writeFile('gemini.md', resptext, (err) => {
+        if(err){
+            console.error('ERROR RENDERING MARKDOWN: ', err);
+            return;
+        }
+        console.log('Successfully written markdown response');
+    });
+    return res.status(200).json({
+        gemini_response: resptext
+    });
 });
 
 // Server initiation
