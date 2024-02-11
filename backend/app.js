@@ -14,9 +14,9 @@ app.use(cors());
 PORT = 8000;
 const geminiPro = new GeminiPro();
 
+// Basic Gemini text to text response
 app.get('/text-response', async (req, res) => {
     const text = req.body.text;
-    console.log(typeof text);
     const resptext = await geminiPro.text_response(text);
     return res.status(200).json({
         message: resptext
