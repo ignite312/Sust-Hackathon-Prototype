@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const Home = () => {
+<<<<<<< HEAD
     const [requesttext, setrequesttext] = useState("");
     const [gemini_response, setgeminiresp] = useState("Hello Ask Me Something!!");
 
@@ -50,6 +51,11 @@ const Home = () => {
             </div>
             <div className="geminiresponse">
                 <div dangerouslySetInnerHTML={{__html: gemini_response}}/>
+=======
+    return (
+        <div>
+            <div className="homestudents">
+>>>>>>> d55c6bb78f9c8fd0f0f6cbcf40c42d6b87a1399d
             </div>
         </div>
     );

@@ -5,6 +5,8 @@ const GeminiPro = require('./GeminiPro');
 const fs = require('fs');
 const GeminiProVision = require('./GeminiProVision');
 const markdown = require('markdown-it')();
+const db = require('./db');
+const { table } = require('console');
 
 // App creation
 const app = express();
@@ -17,6 +19,10 @@ app.use(cors());
 PORT = 8000;
 const geminiPro = new GeminiPro();
 const geminiProVision = new GeminiProVision();
+const qbdb = new db();
+const tables = []
+qbdb.showtables(tables);
+console.log(tables);
 
 // Basic Gemini text to text response
 app.post('/text-response', async (req, res) => {
