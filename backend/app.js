@@ -19,7 +19,7 @@ const geminiPro = new GeminiPro();
 const geminiProVision = new GeminiProVision();
 
 // Basic Gemini text to text response
-app.get('/text-response', async (req, res) => {
+app.post('/text-response', async (req, res) => {
     const text = req.body.text;
     const resptext = await geminiPro.text_response(text);
     fs.writeFile('gemini.md', resptext, (err) => {
@@ -35,7 +35,7 @@ app.get('/text-response', async (req, res) => {
 });
 
 // Gemini image to text response
-app.get('/text-image-response', async (req, res) => {
+app.post('/text-image-response', async (req, res) => {
     const {prompt, imageparts} = req.body;
     const resptext = await geminiProVision.text_image_response(prompt, imageparts);
     fs.writeFile('gemini.md', resptext, (err) => {
