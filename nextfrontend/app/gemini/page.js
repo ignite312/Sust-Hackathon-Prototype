@@ -40,12 +40,16 @@ export default function gemini() {
   
   
     return (
-      <div>
-        <div>
-            <input onChange={handlechange} onSubmit={handleclick} placeholder="Ask Gemini..." className="input input-bordered w-full max-w-xs" />
-            <button onClick={handleclick} className="btn btn-active">Send</button>
+      <div className="flex w-full h-screen">
+        <div className="grid h-screen w-1/4 card bg-base-300 rounded-box place-items-center text-center">
+            <div>
+                <div className="">Hello</div>
+                <div>This is Gemini console</div>
+                <div>Feel free to ask anything</div>
+            </div>
         </div>
-        <div>
+        <div className="divider divider-horizontal"></div>
+        <div className="grid h-screen w-1/2 card bg-base-300 rounded-box ">
             {conv.map(message => (
                 <div key={message.id}>
                     <div className="chat chat-end">
@@ -56,6 +60,13 @@ export default function gemini() {
                     </div>
                 </div>
             ))}
+        </div>
+        <div className="divider divider-horizontal"></div>
+        <div className="grid h-screen w-1/3 card bg-base-300 rounded-box place-items-center">
+            <div className="flex">
+                <input onChange={handlechange} onSubmit={handleclick} placeholder="Ask Gemini..." className="input input-bordered w-full max-w-xs" />
+                <button onClick={handleclick} className="btn btn-active">Send</button>
+            </div>
         </div>
       </div>
     );
