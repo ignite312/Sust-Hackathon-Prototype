@@ -1,61 +1,56 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Home = () => {
-<<<<<<< HEAD
-    const [requesttext, setrequesttext] = useState("");
-    const [gemini_response, setgeminiresp] = useState("Hello Ask Me Something!!");
+    const [requesttext, setRequestText] = useState("");
+    const [image, setImage] = useState(null);
+    const [geminiResponse, setGeminiResponse] = useState("Hello, Ask Me Something!!");
 
     const handleChange = (e) => {
-        setrequesttext(e.target.value);
+        setRequestText(e.target.value);
+    };
+
+    const handleImageChange = (e) => {
+        setImage(e.target.files[0]);
+        console.log(image);
     };
 
     const handleSubmit = async (e) => {
-        e.prevetDefault();
-        try{
-            const url = "http://localhost:8000/text-response";
+        e.preventDefault();
+        try {
+            const url = "http://localhost:8000/text-image-response";
+            const formData = new FormData();
+            formData.append("prompt", requesttext);
+            formData.append("imageparts", image);
+            console.log(formData);
+
             const requestOptions = {
                 method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    text: requesttext
-                })
+                body: formData
             };
 
-            fetch(url, requestOptions)
-                .then(response => {
-                    if(!response.ok){
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data.gemini_response);
-                    setgeminiresp(data.gemini_response);
-                })
-                .catch(error => {
-                    console.error('There was a problem fetching data: ', error);
-                });
-        } catch(err){
-            console.error('Error: ', err);
-        };
-    }
+            const response = await fetch(url, requestOptions);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data.gemini_response);
+            setGeminiResponse(data.gemini_response);
+        } catch (error) {
+            console.error('There was a problem fetching data: ', error);
+        }
+    };
 
     return (
         <div>
             <div className="input">
                 <form onSubmit={handleSubmit}>
-                    <input type="text" value={requesttext} onChange={handleChange} placeholder="Ask Gemini.."/>
+                    <input type="text" value={requesttext} onChange={handleChange} placeholder="Ask Gemini.." />
+                    <input type="file" onChange={handleImageChange} />
+                    <button type="submit">Submit</button>
                 </form>
             </div>
             <div className="geminiresponse">
-                <div dangerouslySetInnerHTML={{__html: gemini_response}}/>
-=======
-    return (
-        <div>
-            <div className="homestudents">
->>>>>>> d55c6bb78f9c8fd0f0f6cbcf40c42d6b87a1399d
+                <div dangerouslySetInnerHTML={{ __html: geminiResponse }} />
             </div>
         </div>
     );
